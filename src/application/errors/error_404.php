@@ -15,7 +15,7 @@ $CI =& get_instance();
 $CI->lang->load('main', $CI->config->item('frontend_language'));
 $CI->lang->load('frontend/main', 'frontend_language');
 
-$data['page_title'] = $CI->lang->line('page_not_found') . ' - ' . $CI->lang->line('site_title');
+$data['page_title'] = generate_page_title($CI->lang->line('page_not_found'));
 
 echo $CI->parser->parse('errors/error_404', $data, TRUE);
 

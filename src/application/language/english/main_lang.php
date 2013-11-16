@@ -15,10 +15,11 @@ $lang['by'] = 'by';
 $lang['contact_me_at'] = 'Contact me at';
 $lang['disable'] = 'Disable';
 $lang['enable'] = 'Enable';
-$lang['site_admin'] = 'Your name';
-$lang['site_description'] = 'An open source content management system';
-$lang['site_name'] = 'Knutt';
-$lang['site_title'] = 'Knutt';
+$lang['page'] = 'Page';
+$lang['site_admin'] = 'Saroj Saengphongumphai';
+$lang['site_description'] = 'Knowledge Sharing';
+$lang['site_name'] = 'MyKnom';
+$lang['site_title'] = 'MyKnom';
 $lang['theme'] = 'Theme';
 $lang['uncategorized'] = 'Uncategorized';
 

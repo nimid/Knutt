@@ -25,6 +25,7 @@ class Category_object {
     private $id;
     private $modified;
     private $name = '';
+    private $number_of_article;
     private $slug;
 
     public function __construct()
@@ -76,6 +77,11 @@ class Category_object {
         return htmlspecialchars($this->name);
     }
 
+    public function get_number_of_article()
+    {
+    	return $this->number_of_article;
+    }
+
     public function get_slug()
     {
         return htmlspecialchars($this->slug);
@@ -116,6 +122,11 @@ class Category_object {
     public function set_name($name)
     {
         $this->name = $name;
+    }
+
+    public function set_number_of_article($number_of_article)
+    {
+    	$this->number_of_article = $number_of_article;
     }
 
     public function set_slug($slug)

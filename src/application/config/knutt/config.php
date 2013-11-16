@@ -13,9 +13,8 @@
 $config['frontend_article_per_page'] = 10;
 $config['frontend_datetime_format'] = 'j M Y G:i';
 $config['frontend_language'] = 'english';
-
 $config['language_attributes'] = 'dir="ltr" lang="en-US"';
-
+$config['page_title_separator'] = '|';
 $config['site_charset'] = 'UTF-8';
 $config['site_email'] = 'your_email@example.com';
 $config['site_email_text'] = 'your_email at example.com';

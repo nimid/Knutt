@@ -37,7 +37,9 @@ class Article extends Solid_Controller {
     {
         log_trace(__CLASS__, __FUNCTION__);
 
-        $page_title = $this->lang->line('site_title');
+        $page_title = generate_page_title(
+        		array(lang('site_title'), lang('site_description')),
+        		FALSE);
 
         $this->category_model->order_by_name_asc();
         $this->category_model->set_enable();
@@ -49,26 +51,7 @@ class Article extends Solid_Controller {
         $this->article_model->order_by_created_desc();
         $this->article_model->set_enable();
 
-        if ( ! empty($slug))
-        {
-            // $slug must be decoded with urldecode function, to prevent the non-English slug not found
-            $this->article_model->set_slug(urldecode($slug));
-            $article = $this->article_model->retrieve();
-
-            if ( ! empty($article))
-            {
-                $page_title = $article->get_headline() . ' - ' . $page_title;
-
-                $data['article'] = $article;
-                $data['page_title'] = $page_title;
-                $this->parser->parse('article/single', $data);
-            }
-            else
-            {
-                show_404();
-            }
-        }
-        else
+        if (empty($slug))
         {
             $articles = $this->article_model->lists();
 
@@ -88,13 +71,34 @@ class Article extends Solid_Controller {
             $data['pagination'] = $pagination;
             $this->parser->parse('article/index', $data);
         }
+        else
+        {
+        	// $slug must be decoded with urldecode function, to prevent the non-English slug not found
+        	$this->article_model->set_slug(urldecode($slug));
+        	$article = $this->article_model->retrieve();
+
+        	if (empty($article))
+        	{
+        		show_404();
+        	}
+        	else
+        	{
+        		$this->article_model->increase_page_view($article->get_id());
+        		$page_title = generate_page_title($article->get_headline());
+
+        		$data['article'] = $article;
+        		$data['page_title'] = $page_title;
+        		$this->parser->parse('article/single', $data);
+        	}
+        }
     }
 
     public function page($page)
     {
         log_trace(__CLASS__, __FUNCTION__);
 
-        $page_title = $this->config->item('site_title');
+        $page_title = generate_page_title(
+            		array(lang('page_at_title_bar') . ' ' . $page));
 
         $this->category_model->order_by_name_asc();
         $this->category_model->set_enable();
@@ -110,12 +114,10 @@ class Article extends Solid_Controller {
 
         if (empty($articles))
         {
-            $data['pagination'] = '';
+            show_404();
         }
         else
         {
-            $page_title = $this->lang->line('page_at_title_bar') . " $page - $page_title";
-
             $this->article_model->set_enable();
             $total_rows = $this->article_model->count();
             $data['pagination'] = $this->pagination($total_rows);

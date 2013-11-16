@@ -46,7 +46,7 @@ class Search extends Solid_Controller {
             redirect('/');
         }
 
-        $page_title = $search . ' - Search Results - ' . $this->config->item('site_title');
+        $page_title = generate_page_title(array($search, lang('search_results')));
 
         $this->category_model->order_by_name_asc();
         $this->category_model->set_enable();
@@ -91,7 +91,7 @@ class Search extends Solid_Controller {
             redirect('/');
         }
 
-        $page_title = $search . ' - Search Results - ' . $this->config->item('site_title');
+        $page_title = generate_page_title(array($search, lang('search_results')));
 
         $this->category_model->order_by_name_asc();
         $this->category_model->set_enable();

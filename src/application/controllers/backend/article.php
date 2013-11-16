@@ -38,6 +38,8 @@ class Article extends Backend {
 
     private function create($article_form)
     {
+    	log_trace(__CLASS__, __FUNCTION__);
+
         $this->article_model->create($article_form);
 
         if ($article_form->get_category() != '')
@@ -50,7 +52,18 @@ class Article extends Backend {
     {
         log_trace(__CLASS__, __FUNCTION__);
 
-        $this->article_model->delete($article_id);
+        if ( ! empty($article_id))
+        {
+	        $this->article_model->set_id($article_id);
+	        $article_object = $this->article_model->retrieve();
+
+	        $this->article_model->delete($article_id);
+
+	        if ($article_object->get_category_id() != '')
+	        {
+	        	$this->category_model->update_number_of_article($article_object->get_category_id());
+	        }
+        }
 
         redirect('backend/article');
     }
@@ -112,6 +125,7 @@ class Article extends Backend {
             $this->article_form->repopulate();
 
             $data['article'] = $this->article_form;
+            $data['page_heading'] = "Create Article";
             $data['page_title'] = "Save Article Error";
             $data['validation_errors'] = validation_errors();
 

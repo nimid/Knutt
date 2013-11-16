@@ -16,7 +16,7 @@
             <div id="main" role="main">
                 <div class="grid_16">
                     <h2 id="page-heading">{$page_heading}</h2>
-                    <form action="{$app_url}/category/save" method="post">
+                    {form_open("$app_url/category/save")}
                     <input type="hidden" name="id" value="{$category->get_id()}" />
                     <input type="hidden" id="enable" name="enabled" value="0" />
 					<div class="box">
@@ -47,7 +47,7 @@
                             </div>
                         </div>
 					</div>
-					</form>
+					{form_close()}
 				</div>
 			</div>
 

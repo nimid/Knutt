@@ -1,5 +1,5 @@
             	        
-            	        <article class="post type-post status-publish format-standard hentry category-uncategorized">
+            	        <article class="post type-post status-publish format-standard hentry">
                             <header class="single-entry-header">
                                 <h1 class="entry-title">
                                     {$article->get_headline()}
@@ -15,23 +15,17 @@
                         		<footer class="single-entry-meta">
                     		    	<p>
                                         {if $article->get_category_name() neq ""}
-                    		    	    {$ci->lang->line('categories')}:
+                    		    	    {lang('categories')}:
                                         <a href="{$base_url}category/{$article->get_category_slug()}"
-                                                title="View all posts in {$article->get_category_name()|article_category_name}">
+                                                title="{lang('view_all_posts_in')} {$article->get_category_name()|article_category_name}">
                                             {$article->get_category_name()|article_category_name}</a>
-                                        |
                                         {/if}
             		    	            
             		    	            {if $article->get_tag() neq ""}
-                		    	        {$ci->lang->line('tags')}:
-                    		    	        {$article->get_tag()}
             		    	            |
+                		    	        {lang('tags')}:
+                    		    	        {$article->get_tag()}
             		    	            {/if}
-            		    	            
-                                        <a href="{$base_url}article/{$article->get_slug()}"
-                                               title="Permalink to {$article->get_headline()}" rel="bookmark">
-                                           {$ci->lang->line('permalink')}
-                                        </a>
                     			    </p>
                 	            </footer>
                 	        </div>

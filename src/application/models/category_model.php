@@ -76,6 +76,7 @@ class Category_model extends CI_Model {
             $category->set_enabled($row->enabled);
             $category->set_id($row->id);
             $category->set_name($row->name);
+            $category->set_number_of_article($row->number_of_article);
             $category->set_slug($row->slug);
 
             $categories[] = $category;

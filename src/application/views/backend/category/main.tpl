@@ -20,7 +20,9 @@
 						            <tr>
 						                <th>Name</th>
 						                <th>Slug</th>
+						                <th>Number of Article</th>
 						                <th>Created Date</th>
+						                <th>Enabled</th>
 						                <th>&nbsp;</th>
 						            </tr>
 						        </thead>
@@ -29,7 +31,9 @@
 						            <tr>
 						                <td>{$category->get_name()}</td>
 						                <td>{$category->get_slug()}</td>
+						                <td>{$category->get_number_of_article()}</td>
 						                <td>{$category->get_created()}</td>
+						                <td>{$category->get_enabled()|value_enabled}</td>
 						                <td style="text-align: center;">
 						                	<a href="{$app_url}/category/form/{$category->get_id()}"
 						                			style="margin: 0 10px 0 0;">

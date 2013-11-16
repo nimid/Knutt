@@ -10,6 +10,40 @@
  * @license http://creativecommons.org/licenses/by-sa/3.0/
 */
 
+if ( ! function_exists(''))
+{
+	function generate_page_title($parameters = '', $is_append_site_title = TRUE)
+	{
+		$CI =& get_instance();
+
+		$separator = $CI->config->item('page_title_separator');
+		$site_title = $CI->lang->line('site_title');
+
+		if (empty($parameters))
+		{
+			$page_title = $site_title;
+		}
+		else
+		{
+			if (is_array($parameters))
+			{
+				$parameters = implode($parameters, " $separator ");
+			}
+
+			if ($is_append_site_title)
+			{
+				$page_title = "$parameters $separator $site_title";
+			}
+			else
+			{
+				$page_title = "$parameters";
+			}
+		}
+
+		return $page_title;
+	}
+}
+
 if ( ! function_exists('log_debug'))
 {
     function log_debug($message)

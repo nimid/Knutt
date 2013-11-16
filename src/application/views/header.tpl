@@ -12,8 +12,8 @@
         <div id="page" class="clearfix">
     	    <header id="branding">
     		    <hgroup id="site-title">
-    			    <h1><a href="{$base_url}" title="" rel="home">{$ci->lang->line('site_name')}</a></h1>
-                    <h2 id="site-description">{$ci->lang->line('site_description')}</h2>
+    			    <h1><a href="{$base_url}" rel="home">{lang('site_name')}</a></h1>
+                    <h2 id="site-description">{lang('site_description')}</h2>
     		    </hgroup>
                 <div class="clear"></div>
                 <nav id="subnav">&nbsp;</nav>

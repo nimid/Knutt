@@ -30,24 +30,26 @@ class Article_model extends CI_Model {
         $this->load->library('forms/article_form');
     }
 
+    private function append_like($fields, $search)
+    {
+    	$count_fields = count($fields);
+    	$return = array();
+
+    	for ($i = 0; $i < $count_fields; $i++)
+    	{
+    		$return[$i] = "`$fields[$i]` LIKE '%" . $this->db->escape_like_str($search) . "%'";
+    	}
+
+    	return "(" . implode($return, ' OR ') . ")";
+    }
+
     public function count()
     {
         log_trace(__CLASS__, __FUNCTION__);
 
-        $this->db->select('COUNT(*) AS count', FALSE);
+		$this->db->from(self::TABLE_NAME);
         $this->db->where('deleted', '0');
-        $query = $this->db->get(self::TABLE_NAME);
-
-        if ($query->num_rows() > 0)
-        {
-            $result = $query->result();
-            $row = $result[0];
-            return $row->count;
-        }
-        else
-        {
-            return 0;
-        }
+		return $this->db->count_all_results();
     }
 
     public function create($article)
@@ -89,6 +91,18 @@ class Article_model extends CI_Model {
         return self::TABLE_NAME;
     }
 
+    public function increase_page_view($article_id)
+    {
+    	log_trace(__CLASS__, __FUNCTION__);
+
+    	if ( ! empty($article_id))
+    	{
+    		$this->db->set('views', 'views + 1', FALSE);
+    		$this->db->where('id', $article_id);
+    		$this->db->update(self::TABLE_NAME);
+    	}
+    }
+
     public function limit($value, $offset = '')
     {
         $this->db->limit($value, $offset);
@@ -123,8 +137,10 @@ class Article_model extends CI_Model {
             $article->set_enabled($row->enabled);
             $article->set_headline($row->headline);
             $article->set_id($row->id);
+            $article->set_modified($row->modified);
             $article->set_slug($row->slug);
             $article->set_tag($row->tag);
+            $article->set_views($row->views);
 
             $articles[] = $article;
         }
@@ -155,8 +171,7 @@ class Article_model extends CI_Model {
 
     public function search($search)
     {
-        $where = "(`headline` LIKE '%" . $this->db->escape_like_str($search) . "%'
-                        OR `body` LIKE '%" . $this->db->escape_like_str($search) . "%')";
+        $where = $this->append_like(array('headline', 'body', 'tag'), $search);
         $this->db->where($where);
     }
 

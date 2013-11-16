@@ -4,7 +4,7 @@
                 <div id="main">
                     <div id="content">
                         <header class="page-header">
-                            <h1 class="page-title">Category Archives: <span>{$category->get_name()}</span></h1>
+                            <h1 class="page-title">{lang('category_archives')} <span>{$category->get_name()}</span></h1>
                         </header>
                         {if ( ! empty($articles))}
                         {include file="article/content.tpl"}

@@ -122,6 +122,11 @@ class Article_object {
         return htmlspecialchars($this->tag);
     }
 
+    public function get_views()
+    {
+    	return $this->views;
+    }
+
     public function is_disabled()
     {
         return ! $this->enabled;
@@ -179,6 +184,11 @@ class Article_object {
         $this->id = $id;
     }
 
+    public function set_modified($modified)
+    {
+    	$this->modified = $modified;
+    }
+
     public function set_slug($slug)
     {
         $this->slug = $slug;
@@ -187,6 +197,11 @@ class Article_object {
     public function set_tag($tag)
     {
         $this->tag = $tag;
+    }
+
+    public function set_views($views)
+    {
+    	$this->views = $views;
     }
 }
 

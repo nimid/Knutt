@@ -46,7 +46,7 @@
                 </div>
                 {/if}
                 
-                <form action="{$base_url}admin/login" method="post">
+                {form_open('admin/login')}
                 <div class="block">
                     <fieldset>
                         <div class="sixteen_column section">
@@ -73,20 +73,20 @@
                         </div>
                     </fieldset>
                 </div>
-                </form>
+                {form_close()}
                 <div class="clear"></div>
             </div>
             
     	</div>
     
         <script type="text/javascript">
-        <!--
-        $(document).ready(function() {
-            $("form").validate();
-            $("input:submit").button();
-            $("#username").focus();
-        });
-        //-->
+            <!--
+            $(document).ready(function() {
+                $("form").validate();
+                $("input:submit").button();
+                $("#username").focus();
+            });
+            //-->
         </script>
     </body>
 </html>

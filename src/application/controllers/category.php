@@ -51,8 +51,6 @@ class Category extends Solid_Controller {
     {
         log_trace(__CLASS__, __FUNCTION__);
 
-        $page_title = $this->config->item('site_title');
-
         if (empty($slug))
         {
             show_404();
@@ -76,7 +74,7 @@ class Category extends Solid_Controller {
         $this->article_model->set_category_id($category->get_id());
         $articles = $this->article_model->lists();
 
-        $page_title = $category->get_name() . ' - ' . $page_title;
+        $page_title = generate_page_title($category->get_name());
 
         $data['articles'] = $articles;
         $data['category'] = $category;

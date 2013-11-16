@@ -22,8 +22,9 @@
                                         <th>Headline</th>
                                         <th>Body</th>
                                         <th>Category</th>
-                                        <th>Tags</th>
+                                        <th>Page View</th>
                                         <th>Created Date</th>
+                                        <th>Updated Date</th>
                                         <th>Enabled</th>
                                         <th>&nbsp;</th>
                                     </tr>
@@ -35,8 +36,9 @@
                                         <td>{$article->get_headline()|truncate:40}</td>
                                         <td>{$article->get_body()|strip_tags|truncate:30}</td>
                                         <td>{$article->get_category_name()|article_category_name|truncate:30}</td>
-                                        <td>{$article->get_tag()|truncate:10}</td>
+                                        <td>{$article->get_views()}</td>
                                         <td>{$article->get_created()|date_format:"%d %b %Y %H:%M"}</td>
+                                        <td>{$article->get_modified()|date_format:"%d %b %Y %H:%M"}</td>
                                         <td>{$article->get_enabled()|value_enabled}</td>
                                         <td>
                                             <a href="{$app_url}/article/form/{$article->get_id()}"

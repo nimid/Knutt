@@ -5,10 +5,10 @@
             <div id="content">
                 <article id="page">
                     <header class="page-entry-header">
-                        <h1 class="entry-title">Not Found</h1>
+                        <h1 class="entry-title">{lang('error_404_not_found')}</h1>
                     </header>
                     <div class="single-entry-content">
-                        <p>Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.</p>
+                        <p>{lang('error_404_no_results_found')}</p>
                     </div>
                 </article>
             </div>

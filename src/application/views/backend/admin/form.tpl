@@ -28,7 +28,7 @@
             <div id="main" role="main">
                 <div class="grid_16">
                     <h2 id="page-heading">{$page_heading}</h2>
-                    <form action="{$app_url}/admin/save" method="post">
+                    {form_open("$app_url/admin/save")}
                     <div class="box">
                         <fieldset>
                             <div class="sixteen_column section">
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                    </form>
+                    {form_close()}
                 </div>
             </div>
 

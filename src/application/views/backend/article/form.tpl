@@ -16,7 +16,7 @@
             <div id="main" role="main">
                 <div class="grid_16">
                     <h2 id="page-heading">{$page_heading}</h2>
-                    <form action="{$app_url}/article/save" method="post">
+                    {form_open("$app_url/article/save")}
                     <input type="hidden" name="id" value="{$article->get_id()}" />
 					<div class="box">
 					    <fieldset>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
 					</div>
-					</form>
+					{form_close()}
 				</div>
 			</div>
 

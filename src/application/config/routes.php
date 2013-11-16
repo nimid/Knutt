@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = 'article';
-$route['404_override'] = '';
+$route['404_override'] = 'article';
 
 $route['article/(:any)'] = 'article/index/$1';
 $route['page'] = 'article/page/1';
