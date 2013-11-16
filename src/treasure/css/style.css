@@ -126,7 +126,7 @@ body {
 	overflow: hidden;
 }
 #content {
-	width: 75.669%;
+	width: 100%;
 	float: left;
 }
 #secondary {
@@ -156,6 +156,9 @@ body {
 }
 .alignright {
 	float: right;
+}
+.pagination a, .pagination strong {
+    margin: 0 7px 0 0;
 }
 /* Headlines
 --------------------------------------------- */
@@ -397,6 +400,7 @@ nav#subnav ul.menu li.menu-item ul.sub-menu li.menu-item a {
 	width: 74.5%;
 	margin: 0;
 	float: right;
+	font-size: .9em;
 }
 #content .post img.wp-post-image {
 	width: 140px;
@@ -406,7 +410,7 @@ nav#subnav ul.menu li.menu-item ul.sub-menu li.menu-item a {
 }
 #content .entry-meta p {
 	padding: 15px 0 0;
-	font: italic .8em/1.5 'Droid Serif', Times, serif;
+	font: italic .95em/1.5 'Droid Serif', Times, serif;
 }
 #content .entry-meta a {
 	padding: 15px 0 0;
@@ -635,10 +639,11 @@ nav#subnav ul.menu li.menu-item ul.sub-menu li.menu-item a {
 	margin: 15px 0 0;
 	padding: 0;
 	float: left;
+	font-size: .9em;
 }
 #content .post .single-entry-meta p {
 	padding: 15px 0 0;
-	font: italic .8em/1.5 'Droid Serif',  Times, serif;
+	font: italic .95em/1.5 'Droid Serif',  Times, serif;
 }
 #content .post .single-entry-meta p a {
 	font-family:'Droid Sans', arial, sans-serif;
@@ -1208,6 +1213,9 @@ a.top:hover {
 	background-color:#fff;
 	z-index: 0;
 }
+.pagination {
+    margin: 0 0 35px 0;
+}
 #wrap {
 	margin: 4px 0 0;
 	padding: 45px 0 0 0;
@@ -1232,7 +1240,7 @@ a.top:hover {
 	float: right;
 }
 #content .entry-content {
-	width: 76.5%;
+	width: 100%;
 }
 #content .entry-details {
 	width: 20%;
@@ -1393,6 +1401,9 @@ nav#subnav ul.menu li.menu-item ul.sub-menu li.menu-item a {
 #page {
 	padding: 0 20px 20px;
 	background-color:#fff;
+}
+.pagination {
+    margin: 0 0 30px 0;
 }
 /* --- Header --- */
 #site-title {
